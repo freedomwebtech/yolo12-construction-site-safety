@@ -7,7 +7,7 @@ names = model.names
 
 
 # Open video
-cap = cv2.VideoCapture("tfs.mp4")
+cap = cv2.VideoCapture("")
 
 
 
