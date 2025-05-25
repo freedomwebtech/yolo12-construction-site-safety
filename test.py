@@ -1,14 +1,5 @@
 import cv2
 from ultralytics import YOLO
-import numpy as np
-import base64
-import os
-import time
-from langchain_core.messages import HumanMessage
-from langchain_google_genai import ChatGoogleGenerativeAI
-import threading
-import cvzone
-from datetime import datetime
 
 # Load YOLOv8 model
 model = YOLO('best.pt')
@@ -20,13 +11,6 @@ cap = cv2.VideoCapture("tfs.mp4")
 
 
 
-# Debug mouse position
-def RGB(event, x, y, flags, param):
-    if event == cv2.EVENT_MOUSEMOVE:
-        print(f"Mouse moved to: [{x}, {y}]")
-
-cv2.namedWindow("RGB")
-cv2.setMouseCallback("RGB", RGB)
 
 
 frame_count = 0
@@ -56,11 +40,10 @@ while True:
             cv2.rectangle(frame, (x1, y1), (x2, y2), (0, 255, 0), 2)
             cv2.putText(frame, label, (x1 + 3, y1 - 7),
                         cv2.FONT_HERSHEY_SIMPLEX, 0.6, (255, 255, 255), 2)
-            cvzone.putTextRect(frame, f'{track_id}', (x2, y2), 1, 1)
 
            
 
-    cv2.imshow("RGB", frame)
+    cv2.imshow("FRAME", frame)
     if cv2.waitKey(0) & 0xFF == 27:  # ESC to quit
         break
 
