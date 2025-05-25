@@ -25,7 +25,7 @@ while True:
         continue
 
     frame = cv2.resize(frame, (1020, 600))
-    results = model.track(frame, persist=True,classes=[0])
+    results = model.track(frame, persist=True)
 
     if results[0].boxes.id is not None:
         ids = results[0].boxes.id.cpu().numpy().astype(int)
